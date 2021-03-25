@@ -13,11 +13,11 @@
  * @package           Vue Author Generator
  *
  * @wordpress-plugin
- * Plugin Name:       Vue Author Generator 2
+ * Plugin Name:       Vue Author Generator
  * Plugin URI:        #
  * Description:       This creates a Vue Author that passes PHP data to a a plugin.
  * Version:           1.0.0
- * Author:            Your Name Here
+ * Author:            Rocky Kev
  * Author URI:        #
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
@@ -36,12 +36,8 @@ if (!defined('WPINC')) {
 define('AUTHOR_GENERATOR_VUE', '1.0.0');
 
 // Invoke Shortcode
-function test_hello_world() {
-    return "<p>Hello there. General Kenobi.</p>";
-}
-
 function vue_author_generator() {
-    // get Vue libs 
+    // get Vue libs
 	wp_register_script('vue-app-vendors',  plugins_url('app/dist/js/chunk-vendors.js', __FILE__), array(), '1.0.0');
 	wp_register_script('my-vue-app', plugins_url('app/dist/js/app.js', __FILE__), array('vue-app-vendors'), '1.0.0');
 
@@ -49,11 +45,9 @@ function vue_author_generator() {
 	wp_enqueue_script('vue-app-vendors');
 	wp_enqueue_script('my-vue-app');
     wp_enqueue_style('my-vue-app',  plugins_url('app/dist/css/app.css', __FILE__),   array(),  '1.0.0');
-    
+
     return '<div id="app"></div>';
 }
 
-
-// TODO: Change this shortcode call sign
 
 add_shortcode('generate-author-vue', 'vue_author_generator');
